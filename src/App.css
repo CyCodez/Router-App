@@ -1,0 +1,53 @@
+main {
+  text-align: center;
+  vertical-align: center;
+
+  
+}
+li{
+  line-Height: 45px
+}
+body{
+    background-color:#696920;
+  color:white;
+}
+.Navigate {
+  background-color: orange;
+  color: black;
+  margin: 15px;
+  padding: 10px;
+  text-decoration: none;
+}
+.user_btn{
+  background:green;
+  color:white;
+  margin: 3px;
+}
+
+.next_btn{
+  background:orange;
+  color:white;
+  padding:5px;
+  margin:4px
+}
+
+.next_btn,.user_btn:hover{
+  background-color:#0bf40b;
+}
+pre{
+   color: #a70606;
+     font-size:25px;
+  font-weight:bold;
+}
+/* [role="button"] {
+  padding: 2px;
+  background-color: navy;
+  color: white;
+  cursor: default;
+}
+[role="button"]:hover,
+[role="button"]:focus,
+[role="button"]:active {
+  background-color: white;
+  color: navy;
+} */
