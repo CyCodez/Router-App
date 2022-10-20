@@ -40,8 +40,8 @@ export function Home() {
     <div>
       <h1>Home</h1>
       <p>This is my Home page</p>
-    <img src="https://avatars.githubusercontent.com/u/100401054?s=400&u=ec4d2d39a9e6fdca5b677f9237dcc00cd909f589&v=4" alt="profile_photo" width="150px" height="150px" style={{borderRadius:"50%"}}/>
-      <marquee style={{margin:"15px"}}>Click the User button to go to the User page</marquee>
+    <img src="https://avatars.githubusercontent.com/u/100401054?s=400&u=ec4d2d39a9e6fdca5b677f9237dcc00cd909f589&v=4" alt="profile_photo" width="150px" height="150px"/>
+      <p style={{margin:"15px"}}>Click the User button to go to the User page</p>
       <Navigation />
     </div>
   );
@@ -107,9 +107,11 @@ export function Users() {
         .map((each, index) => {
           const name = `${each.name.title} ${each.name.first} ${each.name.last}`;
           return (
-            <li key={name.toLowerCase().replaceAll(' ', '')}>{`${
-              index + 1
-            }.${name}`}</li>
+            <div className='info' key={name.toLowerCase().replaceAll(' ', '')}>
+             <p><img src={each.picture.large}/></p>Name: {`${name}`}
+               <p>Date-of-Birth: {each.dob.date.substr(0,10)}</p>
+              <p> Country: {each.location.country}</p>
+            </div>
           );
         })}
      

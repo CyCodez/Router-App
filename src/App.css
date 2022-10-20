@@ -1,14 +1,18 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+
+
 main {
   text-align: center;
   vertical-align: center;
-
-  
 }
 li{
   line-Height: 45px
 }
 body{
-    background-color:#696920;
+    background-color:black;
   color:white;
 }
 .Navigate {
@@ -39,15 +43,18 @@ pre{
      font-size:25px;
   font-weight:bold;
 }
-/* [role="button"] {
-  padding: 2px;
-  background-color: navy;
-  color: white;
-  cursor: default;
+.light{
+  background:white;
+  color:black;
+  border:none
 }
-[role="button"]:hover,
-[role="button"]:focus,
-[role="button"]:active {
-  background-color: white;
-  color: navy;
-} */
+.dark{background:black;
+     color:white}
+img{
+  border-radius:50%
+}
+.info{
+  margin:10px;
+    padding:10px;
+    line-Height:25px;
+}
