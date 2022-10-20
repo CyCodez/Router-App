@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import useFetch from './useFetch'
 import {
   NavLink,
@@ -9,10 +9,44 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
+import myHome from './home-icon.png'
+import {ErrorBoundary} from 'react-error-boundary'
+
+function ErrorFallback({error, resetErrorBoundary}) {
+  return (
+    <div role="alert" style={{lineHeight:"40px"}}>
+      <p>Something went wrong:</p>
+      <pre style={{color: 'red'}}>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Try again</button> 
+      <p>or go back Home</p>
+     <p> <NavLink
+        style={({ isActive }) =>
+          isActive ? { color: "white" } : { color: "black" }
+        }
+        className="Navigates"
+        to="/"
+      >
+       <img src={myHome} width="25" height="25"/>
+      </NavLink></p> 
+    </div>
+  )
+}
+
+
+
 function Navigation() {
   return (
     
     <section className="navigation">
+        <NavLink
+        style={({ isActive }) =>
+          isActive ? { color: "white" } : { color: "black" }
+        }
+        className="Navigate"
+        to="/"
+      >
+        Home
+      </NavLink>
       <NavLink
         style={({ isActive }) =>
           isActive ? { color: "white" } : { color: "black" }
@@ -22,17 +56,64 @@ function Navigation() {
       >
         User
       </NavLink>
+
+ <NavLink
+        style={({ isActive }) =>
+          isActive ? { color: "white" } : { color: "black" }
+        }
+        className="Navigate"
+        to="/bomb"
+      >
+        Test_Err
+      </NavLink>
+      
       <NavLink
         style={({ isActive }) =>
           isActive ? { color: "white" } : { color: "black" }
         }
         className="Navigate"
-        to="/"
+        to="/where"
       >
-        Home
+        404
       </NavLink>
     </section>
   );
+}
+
+export const Bomb=()=>{
+   const [username, setUsername] = useState('')
+  const usernameRef = useRef(null)
+
+
+function Bomb({username}) {
+  if (username === 'bomb') {
+    throw new Error('💥 CABOOM 💥')
+  }
+  return `Hi ${username}`
+}
+  
+  return( <div>
+    <label>
+        {`Username (don't type "bomb"): `}
+        <input
+          placeholder={`type "bomb"`}
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          ref={usernameRef}
+        />
+      </label>
+    <ErrorBoundary
+          FallbackComponent={ErrorFallback}
+          onReset={() => {
+            setUsername('')
+            usernameRef.current.focus()
+          }}
+          resetKeys={[username]}
+        >
+      <Bomb username={username} />
+      </ErrorBoundary>
+    
+  </div>)
 }
 
 export function Home() {
@@ -151,7 +232,7 @@ export function Users() {
         )
       )}
       <div style={{margin:"15px"}}><Navigation /></div>
-       
+       <Outlet/>
     </div>
   );
 }
@@ -168,14 +249,6 @@ function Myout() {
   );
 }
 
-function Layout() {
-  return <Head>I am the heading layout</Head>;
-}
-
-function Head(props) {
-  return <h1 style={{ fontSize: "55px", color: "green" }}>{props.children}</h1>;
-}
-
 function Another() {
   return (
     <div>
@@ -190,17 +263,29 @@ const Notfound = () => {
         {" "}
         error 404 page Not found
       </p>
+      <p className='errors'>Return to Home Page</p>
+        <NavLink
+        style={({ isActive }) =>
+          isActive ? { color: "white" } : { color: "black" }
+        }
+        className="Navigates"
+        to="/"
+      >
+       <img src={myHome} width="25" height="25"/>
+      </NavLink>
     </div>
   );
 };
 function Rout() {
   return (
     <>
-    
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/bomb" element={<Bomb/>}/>
+      
         <Route path="/Users" element={<Users />}>
-          <Route path="out" element={<Myout />} />
+            <Route path="out" element={<Myout />} />
           <Route path=":another" element={<Another />} />
         </Route>
         <Route path="*" element={<Notfound />} />

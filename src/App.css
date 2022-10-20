@@ -22,6 +22,10 @@ body{
   padding: 10px;
   text-decoration: none;
 }
+navigates{color: black;
+  margin: 15px;
+  padding: 10px;
+  text-decoration: none}
 .user_btn{
   background:green;
   color:white;
@@ -57,4 +61,8 @@ img{
   margin:10px;
     padding:10px;
     line-Height:25px;
+}
+.errors{
+ margin: 5px;
+  padding: 10px
 }
