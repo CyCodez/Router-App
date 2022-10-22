@@ -17,7 +17,7 @@ function useFetch(url, options) {
       case 'loading':
         return { ...initialState, loading: true };
       case 'fetched':
-        return { ...initialState, data: action.payload, laoding: false };
+        return { ...initialState, data: action.payload};
       case 'error':
         return { ...initialState, error: action.payload, loading: false };
       default:

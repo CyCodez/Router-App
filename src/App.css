@@ -22,6 +22,9 @@ body{
   padding: 10px;
   text-decoration: none;
 }
+.Navigate:hover{
+  background:#855805;
+}
 navigates{color: black;
   margin: 15px;
   padding: 10px;
@@ -30,6 +33,9 @@ navigates{color: black;
   background:green;
   color:white;
   margin: 3px;
+  padding:5px;
+   transition-timing-function: ease-in-out;
+  transition: 0.9s;
 }
 
 .next_btn{
@@ -39,12 +45,36 @@ navigates{color: black;
   margin:4px
 }
 
-.next_btn,.user_btn:hover{
-  background-color:#0bf40b;
+.user_btn:hover{
+  background-color:#023b02;
+   padding:6px;
+  margin:5px;
 }
-pre{
-   color: #a70606;
-     font-size:25px;
+.next_btn:hover{
+  background:#865804
+ 
+}
+button[disabled=disabled],button:disabled:hover{
+  cursor:not-allowed;
+  pointer-event:none;
+  background:grey;
+}
+
+.Navy{
+  margin:15px;
+}
+.cabon{
+  margin:10px;
+padding:10px;
+font-size:30px;
+}
+.welcome{
+  margin:15px;
+ font-size:20px;
+}
+.wrng{
+  color:red;
+  font-size:20px;
   font-weight:bold;
 }
 .light{
@@ -64,5 +94,10 @@ img{
 }
 .errors{
  margin: 5px;
-  padding: 10px
+  padding: 10px;
+  font-size:25px
+}
+
+button[disabled=disabled],button:disabled{
+  background:grey;
 }

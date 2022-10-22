@@ -22,9 +22,6 @@ import Rout from './router'
       
      <Rout/>
         
-     
-      
-
     </main>
   )
 }
